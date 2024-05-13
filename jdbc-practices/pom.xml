@@ -6,5 +6,11 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>jdbc-practices</artifactId>
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+	</properties>
   <packaging>pom</packaging>
 </project>
