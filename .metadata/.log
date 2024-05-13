@@ -1,0 +1,37 @@
+!SESSION 2024-05-13 11:10:47.976 -----------------------------------------------
+eclipse.buildId=4.31.0.20240307-1200
+java.version=17.0.10
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/imbyeongjun/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/imbyeongjun/.eclipse_keyring
+
+!ENTRY ch.qos.logback.classic 1 0 2024-05-13 11:10:52.696
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-05-13 11:11:04.759
+!MESSAGE Logback config file: /Users/imbyeongjun/eclipse-workspace/poscodx2024/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.6.0.20240217-1525.xml
+
+!ENTRY org.eclipse.urischeme 4 0 2024-05-13 11:11:15.099
+!MESSAGE java.nio.file.FileSystemException: /Volumes/Eclipse/Eclipse.app/Contents/Info.plist: Read-only file system
+!STACK 0
+java.lang.IllegalStateException: java.nio.file.FileSystemException: /Volumes/Eclipse/Eclipse.app/Contents/Info.plist: Read-only file system
+	at org.eclipse.urischeme.internal.registration.PlistFileWriter.transformDocument(PlistFileWriter.java:213)
+	at org.eclipse.urischeme.internal.registration.PlistFileWriter.writeTo(PlistFileWriter.java:202)
+	at org.eclipse.urischeme.internal.registration.RegistrationMacOsX.changePlistFile(RegistrationMacOsX.java:146)
+	at org.eclipse.urischeme.internal.registration.RegistrationMacOsX.handleSchemes(RegistrationMacOsX.java:53)
+	at org.eclipse.urischeme.AutoRegisterSchemeHandlersJob.run(AutoRegisterSchemeHandlersJob.java:92)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.nio.file.FileSystemException: /Volumes/Eclipse/Eclipse.app/Contents/Info.plist: Read-only file system
+	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:100)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218)
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(FileSystemProvider.java:484)
+	at java.base/java.nio.file.Files.newOutputStream(Files.java:228)
+	at java.base/java.nio.file.Files.newBufferedWriter(Files.java:3008)
+	at java.base/java.nio.file.Files.newBufferedWriter(Files.java:3056)
+	at org.eclipse.urischeme.internal.registration.FileProvider.newWriter(FileProvider.java:51)
+	at org.eclipse.urischeme.internal.registration.RegistrationMacOsX.lambda$8(RegistrationMacOsX.java:146)
+	at org.eclipse.urischeme.internal.registration.PlistFileWriter.transformDocument(PlistFileWriter.java:206)
+	... 5 more
