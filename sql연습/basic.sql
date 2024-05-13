@@ -93,4 +93,13 @@ FROM
     pet
 WHERE
     name LIKE 'b____';
+    
+
+select count(*)
+from pet;
+
+-- null이 아닌것만 count
+select count(death)
+from pet;
+
 
