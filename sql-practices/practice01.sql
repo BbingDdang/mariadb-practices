@@ -7,22 +7,12 @@ where emp_no = 10944;
 -- 문제2. 
 -- 전체직원의 다음 정보를 조회하세요. 가장 선임부터 출력이 되도록 하세요. 출력은 이름, 성별,  입사일 순서이고 “이름”, “성별”, “입사일로 컬럼 이름을 대체해 보세요.
 select concat(first_name, " ", last_name) as "이름", gender as "성별", hire_date as "입사일"
-from employees
-order by hire_date asc
-limit 0, 100;
+from employees;
 -- 문제3.
 -- 여직원과 남직원은 각 각 몇 명이나 있나요?
 select gender, count(*)
 from employees
 group by gender;
-
--- disticnt 중복 데이터 제거.
--- 서브 문제 4.
--- titles 테이블에서 모든 직급의 이름 출력
-select distinct title
-from titles;
-
-
 -- 문제4.
 -- 현재 근무하고 있는 직원 수는 몇 명입니까? (salaries 테이블을 사용합니다.) 
 select count(emp_no) as "직원 수"
