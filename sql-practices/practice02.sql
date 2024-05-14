@@ -8,18 +8,27 @@ from salaries;
 -- 문제2.
 -- 마지막으로 신입사원이 들어온 날은 언제 입니까? 다음 형식으로 출력해주세요.
 -- 예) 2014년 07월 10일
-select max(date_format(hire_date, "%Y년 %m월 %d일")) 
-from employees;
+SELECT 
+    MAX(DATE_FORMAT(hire_date, '%Y년 %m월 %d일'))
+FROM
+    employees;
 -- 문제3.
 -- 가장 오래 근속한 직원의 입사일은 언제인가요? 다음 형식으로 출력해주세요.
 -- 예) 2014년 07월 10일
-
+SELECT 
+    MIN(DATE_FORMAT(hire_date, '%Y년 %m월 %d일'))
+FROM
+    employees
+;
 
 -- 문제4.
 -- 현재 이 회사의 평균 연봉은 얼마입니까?
-select avg(salary) as "평균연봉"
-from salaries
-where to_date > now();
+SELECT 
+    AVG(salary) AS '평균연봉'
+FROM
+    salaries
+WHERE
+    to_date > NOW();
 -- 문제5.
 -- 현재 이 회사의 최고/최저 연봉은 얼마입니까?
 select max(salary) as "최고연봉",min(salary) as "최저연봉"
@@ -27,9 +36,5 @@ from salaries
 where to_date > now();
 -- 문제6.
 -- 최고 어린 사원의 나이와 최 연장자의 나이는?
-select substring(now() - min(birth_date),3,2) as "최연장자", substring(now() - max(birth_date),3,2) as "최연소자"
-from employees;
-
 select substring(now(),1,4) - substring(min(birth_date),1,4) as "최연장자", substring(now(),1,4) - substring(max(birth_date),1,4) as "최연소자" from employees;
-
 
