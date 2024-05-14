@@ -63,6 +63,3 @@ FROM
 GROUP BY emp_no
 HAVING emp_no = '10060';
 
-
-
-
