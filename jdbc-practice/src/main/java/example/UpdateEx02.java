@@ -2,10 +2,10 @@ package example;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
-public class UpdateEx01 {
+public class UpdateEx02 {
 
 	public static void main(String[] args) {
 		DeptVo vo = new DeptVo();
@@ -20,7 +20,7 @@ public class UpdateEx01 {
 		boolean result = false;
 		
 		Connection conn = null;
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		
 		try {
 			//1. JDBC Driver 로딩
@@ -29,13 +29,17 @@ public class UpdateEx01 {
 			//2. 연결하기
 			String url = "jdbc:mariadb://192.168.0.203:3306/webdb?charset=utf8";
 			conn = DriverManager.getConnection(url, "webdb", "webdb");
-
+			String sql = "update dept set name=? where no = ?";
 			//3. Statement 생성하기
-			stmt = conn.createStatement();
+			pstmt = conn.prepareStatement(sql);
+			
+			// binding
+			pstmt.setString(1, vo.getName());
+			pstmt.setLong(1, vo.getNo());
 			
 			//4. SQL 실행
-			String sql = "update dept set name='" + vo.getName() + "' where no = " + vo.getNo();
-			int count = stmt.executeUpdate(sql);
+			
+			int count = pstmt.executeUpdate(sql);
 			
 			//5. 결과 처리
 			result = count == 1;
@@ -46,8 +50,8 @@ public class UpdateEx01 {
 			System.out.println("error:" + e);
 		} finally {
 			try {
-				if(stmt != null) {
-					stmt.close();
+				if(pstmt != null) {
+					pstmt.close();
 				}
 				
 				if(conn != null) {
