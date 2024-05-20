@@ -121,7 +121,6 @@ public class BookMallTest {
 	@Test
 	public void testCart() {
 		List<CartVo> list = cartDao.findByUserNo(mockUserVo01.getNo());
-		
 		assertEquals(2, list.size());		
 
 		assertEquals(mockBookVo01.getNo(), list.get(0).getBookNo());

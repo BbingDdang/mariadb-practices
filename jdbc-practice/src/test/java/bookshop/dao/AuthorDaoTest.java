@@ -14,30 +14,26 @@ import bookshop.vo.AuthorVo;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class AuthorDaoTest {
-	
 	private static int count = 0;
-	private static AuthorVo mockAuthorVo = new AuthorVo();
 	private static AuthorDao authorDao = new AuthorDao();
-	
-	
+	private static AuthorVo mockAuthorVo = new AuthorVo();
 	
 	@BeforeAll
 	public static void setUp() {
 		count = authorDao.findAll().size();
 	}
-	
+
 	@Test
 	@Order(1)
 	public void testInsert() {
-		AuthorVo vo = new AuthorVo();
-		vo.setName("칼세이건");
+		mockAuthorVo.setName("칼세이건");
 		authorDao.insert(mockAuthorVo);
-		//assertTrue(result);
-		assertNotNull(mockAuthorVo .getNo());
+
+		assertNotNull(mockAuthorVo.getNo());
 	}
 	
 	@Test
-	@Order(2)
+	@Order(2)	
 	public void testFindAll() {
 		assertEquals(count + 1, authorDao.findAll().size());
 	}
